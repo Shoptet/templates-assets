@@ -154,9 +154,6 @@ input[type="radio"] {
             cursor: not-allowed;
         }
     }
-    .table-payu & {
-        display: inline;
-    }
     &.error-field,
     &.js-error-field {
         & + label {
@@ -217,16 +214,6 @@ input {
     &[type="email"],
     &[type="search"] {
         .appearance(none);
-    }
-    &[type="radio"] {
-        .table-payu & {
-            .appearance(radio);
-        }
-    }
-    &[type="checkbox"] {
-        .table-payu & {
-            .appearance(checkbox);
-        }
     }
 }
 

@@ -116,9 +116,9 @@
             if (content !== false) {
                 shoptet.modal.open({
                     html: shoptet.content.colorboxHeader + content + shoptet.content.colorboxFooter,
-                    width: shoptet.config.colorbox.widthLg,
-                    className: shoptet.config.colorbox.classLg,
-                    onComplete: function () {
+                    width: shoptet.modal.config.widthLg,
+                    className: shoptet.modal.config.classLg,
+                    onComplete: function() {
                         $('.colorbox-html-content img').unveil();
                         $('body').removeClass(shoptet.config.bodyClasses);
                         if ($('.overlay').length > 0) {
@@ -171,10 +171,11 @@
      * This function does not accept any arguments.
      */
     function functionsForStep1() {
-        shoptet.checkout.getStatedValues();
-        shoptet.checkout.setFirstPossibleShippingAndBilling();
-        shoptet.checkout.setActiveShippingAndPayments();
-        shoptet.checkout.payu();
+        shoptet.checkoutShared.getStatedValues();
+        shoptet.checkoutShared.setActiveShippingAndPayments();
+        shoptet.checkoutShared.displayApplePay();
+        shoptet.checkoutShared.setupDeliveryShipping();
+        shoptet.checkoutShared.payu();
     }
 
     /**
@@ -423,9 +424,10 @@
             var content = $('.free-gifts-wrapper').html();
             shoptet.modal.open({
                 html: shoptet.content.colorboxHeader + content + shoptet.content.colorboxFooter,
-                width: shoptet.config.colorbox.widthSm,
-                maxHeight: shoptet.config.colorbox.maxHeight,
-                className: shoptet.config.colorbox.classSm
+                width: shoptet.modal.config.widthSm,
+                maxWidth: shoptet.modal.config.maxWidth,
+                maxHeight: shoptet.modal.config.maxHeight,
+                className: shoptet.modal.config.classSm
             });
             $('#colorbox input').remove();
         });

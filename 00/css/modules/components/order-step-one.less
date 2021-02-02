@@ -6,12 +6,6 @@
     &:last-child {
         border-bottom-style: none;
     }
-    &.payu-billing-info {
-        padding-left: 0;
-        label {
-            padding-left: 20px;
-        }
-    }
     input[type="radio"] + label {
         display: flex;
         justify-content: space-between;
@@ -58,16 +52,20 @@
     }
 }
 
-#payu-template {
-    .container {
-        width: auto;
-        padding-left: 0;
-        padding-right: 0;
-        padding: round(@line-height-computed / 2) 0;
-    }
-    table {
-        max-width: 100%;
-        width: 100% !important;
-        margin: 0 !important;
-    }
+#payu_ .table-payu {
+    border: 0 !important;
+    width: 100% !important;
+    max-width: 100%;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: none !important;
+}
+
+input[type="radio"].payu + label::before,
+input[type="radio"].payu + label::after {
+    visibility: hidden;
+}
+#payu_ input[type="radio"] {
+    display: inline;
+    .appearance(auto);
 }

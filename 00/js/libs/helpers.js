@@ -61,13 +61,14 @@
 
     function formatNumber(decimalPlaces, decimalSeparator, thousandSeparator) {
         var number = this;
+        var decSep, decPlaces;
         var thSep = resolveThousandSeparator(thousandSeparator);
         if (!Number.isInteger(number.valueOf())) {
-            var decSep = resolveDecimalSeparator(decimalSeparator);
-            var decPlaces = resolveDecimalPlaces(decimalPlaces);
+            decSep = resolveDecimalSeparator(decimalSeparator);
+            decPlaces = resolveDecimalPlaces(decimalPlaces);
         } else {
-            var decSep = 0;
-            var decPlaces = 0;
+            decSep = 0;
+            decPlaces = 0;
         }
         var s = number < 0 ? '-' : '';
         var i = parseInt(number = Math.abs(+number || 0).toFixed(decPlaces)) + '';

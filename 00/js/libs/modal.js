@@ -39,15 +39,15 @@
         var width;
         var $colorbox = $('#colorbox');
         // 'colorbox-xs|sm|lg' is fallback for hardcoded classes in partners scripts
-        if ($colorbox.hasClass('colorbox-xs') || $colorbox.hasClass(shoptet.config.colorbox.classXs)) {
-            width = shoptet.config.colorbox.widthXs;
-        } else if ($colorbox.hasClass('colorbox-sm') || $colorbox.hasClass(shoptet.config.colorbox.classSm)) {
-            width = shoptet.config.colorbox.widthSm;
-        } else if ($colorbox.hasClass('colorbox-lg') || $colorbox.hasClass(shoptet.config.colorbox.classLg)) {
-            width = shoptet.config.colorbox.widthLg;
+        if ($colorbox.hasClass('colorbox-xs') || $colorbox.hasClass(shoptet.modal.config.classXs)) {
+            width = shoptet.modal.config.widthXs;
+        } else if ($colorbox.hasClass('colorbox-sm') || $colorbox.hasClass(shoptet.modal.config.classSm)) {
+            width = shoptet.modal.config.widthSm;
+        } else if ($colorbox.hasClass('colorbox-lg') || $colorbox.hasClass(shoptet.modal.config.classLg)) {
+            width = shoptet.modal.config.widthLg;
         } else {
             // colorbox.widthMd is default width of colorbox
-            width = shoptet.config.colorbox.widthMd;
+            width = shoptet.modal.config.widthMd;
         }
         if (!detectResolution(shoptet.config.breakpoints.lg)) {
             var responsiveWidth;
@@ -72,5 +72,19 @@
         var fn = eval(fnName);
         shoptet.scripts.registerFunction(fn, 'modal');
     });
+
+    shoptet.modal.config = {};
+    shoptet.modal.config.opacity = 0.65;
+    shoptet.modal.config.maxWidth = '98%';
+    shoptet.modal.config.maxHeight = '95%';
+    shoptet.modal.config.initialHeight = 480;
+    shoptet.modal.config.widthXs = 300;
+    shoptet.modal.config.widthSm = 500;
+    shoptet.modal.config.widthMd = 700;
+    shoptet.modal.config.widthLg = 1152;
+    shoptet.modal.config.classXs = 'shoptet-modal-xs';
+    shoptet.modal.config.classSm = 'shoptet-modal-sm';
+    shoptet.modal.config.classMd = 'shoptet-modal-md';
+    shoptet.modal.config.classLg = 'shoptet-modal-lg';
 
 })(shoptet);

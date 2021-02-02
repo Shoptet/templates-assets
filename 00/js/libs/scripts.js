@@ -212,7 +212,10 @@
         'ShoptetDataLayerUpdated',
         'ShoptetValidationTransform',
         'ShoptetValidationWarning',
-        'ShoptetValidationError'
+        'ShoptetValidationError',
+        'ShoptetBaseShippingInfoObtained',
+        'ShoptetShippingMethodUpdated',
+        'ShoptetBillingMethodUpdated'
     ];
     // TODO: updateCartButton - on cart page unnecessary
     shoptet.scripts.libs = {
@@ -236,27 +239,27 @@
             'create'
         ],
         checkout: [
-            'changePaymentRelations',
-            'callShippingBillingRelations',
-            'replacingChosenShippingAndBilling',
-            'revealMatrixPrice',
+            'toggleAnotherShipping'
+        ],
+        checkoutShared: [
             'displaySelectedPriceByShippingBillingMethods',
-            'checkFirstPossibleBillingMethod',
-            'setFirstPossibleShippingAndBilling',
+            'callShippingBillingRelations',
+            'changePaymentRelations',
+            'replacingChosenShippingAndBilling',
             'setActiveShippingAndPayments',
             'checkIsSelectedActive',
             'payu',
-            'gopaySelectHelper',
             'getStatedValues',
             'setFieldValues',
-            'toggleAnotherShipping',
-            'modalMagic',
-            'chooseABranchModal',
-            'compareHeight',
-            'fixSidebar',
-            'handleWithSidebar',
+            'displayApplePay',
+            'updatePrice',
+            'updatePriceSummary',
+            'afterPriceChange',
+            'setupExternalShipping',
+            'handleExternalShippingLinks',
             'setupDeliveryShipping',
-            'displayApplePay'
+            'chooseABranchModal',
+            'modalMagic'
         ],
         validator: [
             'initNewValidator',

@@ -5,10 +5,10 @@ var currencyExchangeRate = shoptet.helpers.toFloat($('#currencyExchangeRate').te
 
 // Colorbox defaults
 // $.colorbox.settings.opacity must be identical as alpha channel of @overlay-bg in theme-variables.less
-$.colorbox.settings.opacity = shoptet.config.colorbox.opacity;
-$.colorbox.settings.maxWidth = shoptet.config.colorbox.maxWidth;
-$.colorbox.settings.initialWidth = shoptet.config.colorbox.widthMd;
-$.colorbox.settings.initialHeight = shoptet.config.colorbox.initialHeight;
+$.colorbox.settings.opacity = shoptet.modal.config.opacity;
+$.colorbox.settings.maxWidth = shoptet.modal.config.maxWidth;
+$.colorbox.settings.initialWidth = shoptet.modal.config.widthMd;
+$.colorbox.settings.initialHeight = shoptet.modal.config.initialHeight;
 shoptet.config.bodyClasses = 'user-action-visible' +
     ' navigation-window-visible' +
     ' cart-window-visible' +
@@ -366,9 +366,9 @@ function initColorbox() {
         for(var key in $lightboxes) {
             $('*[data-gallery="' + key + '"]').colorbox({
                 rel: key,
-                maxWidth: shoptet.config.colorbox.maxWidth,
-                width: shoptet.config.colorbox.widthLg,
-                className: shoptet.config.colorbox.classLg
+                maxWidth: shoptet.modal.config.maxWidth,
+                width: shoptet.modal.config.widthLg,
+                className: shoptet.modal.config.classLg
             });
         }
     }
@@ -712,8 +712,8 @@ document.addEventListener('DOMContentLoaded', function() {
             closeButton: showOnly,
             overlayClose: showOnly,
             html: shoptet.content.colorboxHeader + content + shoptet.content.colorboxFooter,
-            className: shoptet.config.colorbox.classMd,
-            width: shoptet.config.colorbox.widthMd,
+            className: shoptet.modal.config.classMd,
+            width: shoptet.modal.config.widthMd,
             onClosed: function() {
                 $('.site-agreement').remove();
             }
@@ -937,8 +937,8 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         shoptet.modal.open({
             href: $(this).attr('href'),
-            width : shoptet.config.colorbox.widthSm,
-            className: shoptet.config.colorbox.classSm,
+            width : shoptet.modal.config.widthSm,
+            className: shoptet.modal.config.classSm,
             onComplete: function() {
                 shoptet.validator.initValidator($('form'));
             }
@@ -949,9 +949,9 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         shoptet.modal.open({
             href: $(this).attr('href'),
-            maxWidth: shoptet.config.colorbox.maxWidth,
-            width : shoptet.config.colorbox.widthLg,
-            className: shoptet.config.colorbox.classLg
+            maxWidth: shoptet.modal.config.maxWidth,
+            width : shoptet.modal.config.widthLg,
+            className: shoptet.modal.config.classLg
         });
     });
 
