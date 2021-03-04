@@ -297,6 +297,10 @@
         var billingPrice = document.querySelector('[data-billing-price-id="' + billingActive + '"]');
         var cartPriceWithVat = document.querySelector('[data-price-total]');
         var cartPriceWithoutVat = document.querySelector('[data-price-total-wv]');
+        if (cartPriceWithoutVat === null) {
+            // Workaround for non VAT payers
+            cartPriceWithoutVat = document.createElement('span');
+        }
         // TODO:
         var shippingPriceNotSpecified = shippingPrice.querySelector('.shipping-price-not-specified');
         var prices = {
