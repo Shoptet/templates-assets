@@ -158,3 +158,118 @@
       clear: both;
     }
 }
+
+// START three types of the next step element used in 3G
+.nextStepOneLine() {
+    .nextStepCommon();
+    .next-step {
+        .nextStepColumn();
+        @media (min-width: @screen-xs) {
+            .nextStepRow();
+        }
+    }
+}
+.nextStepCartWithSidebar() {
+    .nextStepCommon();
+    .next-step {
+        .nextStepColumn();
+        @media (min-width: @screen-xs) and (max-width: @screen-sm-max) {
+            .nextStepRow();
+        }
+        @media (min-width: @screen-xl-min) {
+            .nextStepRow();
+        }
+    }
+}
+.nextStepCartWithoutSidebar() {
+    .nextStepCommon();
+    .next-step {
+        .nextStepColumn();
+        @media (min-width: @screen-xs) and (max-width: @screen-sm-max) {
+            .nextStepRow();
+        }
+        @media (min-width: @screen-xl-min) {
+            // 1st and 2nd step
+            .id--16 &,
+            .id--17 & {
+                .nextStepRow();
+            }
+        }
+        @media (min-width: @screen-md-min) {
+            // Cart
+            .id--9 & {
+                .nextStepRow();
+            }
+        }
+    }
+}
+// END three types of the next step element used in 3G
+
+// START helper mixins ONLY for use in mixins above
+.nextStepColumn() {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: stretch;
+    margin-bottom: @line-height-computed;
+    text-align: center;
+    .next-step-back {
+        text-align: center;
+    }
+}
+
+.nextStepRow() {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    .next-step-back {
+        text-align: right;
+        padding-right: 1em;
+    }
+}
+
+@order-button-suffix-font-size: 14px;
+@order-button-line-height: 36px;
+@order-button-font-size: 18px;
+@order-button-padding-vertical: 10px;
+@order-button-padding-horizontal: 20px;
+.nextStepCommon() {
+    .next-step {
+        .btn.btn-lg {
+            padding: @order-button-padding-vertical @order-button-padding-horizontal;
+            line-height: @order-button-line-height;
+        }
+    }
+    .next-step-back {
+        display: inline-block;
+        padding-top: (@order-button-padding-vertical * 1.5 + @btn-border-width);
+        padding-bottom: (@order-button-padding-vertical * 1.5 + @btn-border-width);
+        // TODO: should be used @btn-line-height-lg, but first we have to unify it across templates,
+        // which requires lot of related work, e.g. the quantity component
+        // line-height: @btn-line-height-lg - @btn-padding-vertical;
+        // Consider also the btn-lg padding.
+        line-height: @order-button-line-height - @order-button-padding-vertical;
+        // TODO: increase default font size across our templates
+        font-size: @order-button-suffix-font-size;
+        font-weight: normal;
+    }
+    .next-step-finish {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .order-button-text {
+        vertical-align: middle;
+        font-size: @order-button-font-size;
+        font-weight: normal;
+        text-transform: uppercase;
+    }
+    .order-button-suffix {
+        margin-top: -(round((@order-button-line-height - @order-button-suffix-font-size) / 4));
+        padding-bottom: round((@order-button-line-height - @order-button-suffix-font-size) / 2);
+        font-size: @order-button-suffix-font-size;
+        font-weight: normal;
+        line-height: @order-button-suffix-font-size;
+        text-transform: none;
+    }
+}
+// END helper mixins ONLY for use in mixins above

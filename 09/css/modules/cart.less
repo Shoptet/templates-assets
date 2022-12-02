@@ -229,30 +229,13 @@
     margin-top: @line-height-computed;
 }
 
+// Shared declarations for the next step element behavior
+.nextStepOneLine();
+// START: Template-specific declarations for the next step element
 .next-step {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin-top: round(@grid-gutter-width * 1.5);
 }
-.next-step-back {
-    padding-right: 1em;
-}
-.summary .next-step {
-    display: block;
-    text-align: right;
-}
-.continue-shopping {
-    text-transform: uppercase;
-    display: inline-block;
-    margin-bottom: round(@grid-gutter-width / 2);
-    &::before {
-        &:extend(.shp-icon);
-        content: @icon-arrow-left-code;
-        font-size: 38px;
-        line-height: 38px;
-        display: block;
-    }
-}
+// END: Template-specific declarations for the next step element
 
 // OrderStep
 .ordering-process {
@@ -337,10 +320,6 @@
     &:extend(.shp-icon);
     content: @icon-box-code;
     font-size: 30px;
-}
-
-.back-to-shop {
-    text-transform: uppercase;
 }
 .complete-order {
     display: flex;

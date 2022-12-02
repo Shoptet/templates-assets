@@ -1,6 +1,8 @@
-// TODO: better place for this
+// TODO: better place for this - use constants.less, see https://gitlab.shoptet.cz/applications/templates/-/merge_requests/408/diffs
+@font-size-large: 20px;
+@screen-xs: 480px;
+@btn-padding: @btn-padding-vertical @btn-padding-horizontal;
 @navigation-height: (@navigation-element-font-size + (@navigation-link-padding-vertical * 2));
-
 @media (min-width: @screen-xl-min) {
     .make-grid(xl);
 }
@@ -453,4 +455,9 @@ iframe[name="google_conversion_frame"] {
 
 .SPayBankButton__text {
     align-self: center;
+}
+
+#checkoutSidebar {
+    position: relative;
+    transition: top @transition-duration * 2 @transition-timing;
 }

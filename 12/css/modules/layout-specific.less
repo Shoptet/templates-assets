@@ -57,15 +57,6 @@ body.ordering-process {
         margin-bottom: 0;
     }
 }
-.cart-inner {
-    .sending-order {
-        .next-step {
-            border-top: 1px solid #e7e7e7;
-            margin-top: round(@line-height-computed / 2);
-            padding-top: round(@line-height-computed / 2);
-        }
-    }
-}
 
 .co-delivery-method {
     margin-right: round(@grid-gutter-width / 4);
@@ -77,15 +68,20 @@ body.ordering-process {
     margin-bottom: @line-height-computed;
 }
 
+// Shared declarations for the next step element behavior
+.nextStepOneLine();
+// START: Template-specific declarations for the next step element
 .next-step {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: @line-height-computed;
-    padding-top: round(@line-height-computed / 2);
-    a:only-child {
-        margin-left: auto;
+    padding-bottom: @line-height-computed * 2;
+    padding-top: @line-height-computed * 2;
+    .continue-shopping,
+    .next-step-back {
+        &::before {
+            display: none;
+        }
     }
 }
+// END: Template-specific declarations for the next step element
 
 //orderStep1
 //order headers
@@ -309,6 +305,11 @@ a.btn {
         content: @icon-arrow-right-code;
         margin-left: 1ex;
         font-size: @line-height-computed;
+    }
+    &.next-step-finish {
+        &::after {
+            display: none;
+        }
     }
 }
 .back-to-shop {

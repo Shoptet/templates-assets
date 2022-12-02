@@ -171,44 +171,17 @@ ul {
         }
     }
 }
+// Shared declarations for the next step element behavior
+.nextStepCartWithoutSidebar();
 
-.next-step {
-    position: relative;
-    min-height: 120px;
-    padding-bottom: 60px;
-    line-height: 60px;
-    text-align: center;
-    a {
-        text-decoration: none;
-        &:hover {
-            text-decoration: underline;
-        }
-        &:first-child {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-        }
-        &.btn {
-            &:hover {
-                text-decoration: none;
-            }
-        }
-    }
-    @media (min-width: @screen-sm-min) {
-        .clearfixMixin();
-        min-height: 60px;
-        margin-bottom: @line-height-computed;
-        padding-bottom: 0;
-        text-align: left;
-        a {
-            &:first-child {
-                position: static;
-            }
-        }
-        .btn {
-            float: right;
-            margin-left: round(@line-height-computed / 2);
+.row.summary,
+.cart-content .form-group.consents {
+    margin-bottom: @line-height-computed;
+}
+.row.summary {
+    @media (min-width: @screen-md-min) {
+        .box {
+            margin-bottom: 0;
         }
     }
 }

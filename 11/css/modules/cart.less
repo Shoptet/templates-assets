@@ -49,7 +49,7 @@ ol.cart-header {
         top: 0;
         li {
             display: none;
-            padding: 0 round(@grid-gutter-width * 1.5);
+            padding: 0 round(@grid-gutter-width * 1.5) 0 round(@grid-gutter-width / 2);
             border-bottom-style: solid;
             border-bottom-width: 1px;
             font-size: @font-size-large;
@@ -300,51 +300,30 @@ ol.cart-header {
     margin-bottom: 0;
 }
 
+// Shared declarations for the next step element behavior
+.nextStepCartWithSidebar();
+// START: Template-specific declarations for the next step element
 .next-step {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
-        padding-left: round(@grid-gutter-width / 4);
-        padding-right: round(@grid-gutter-width / 4);
-        padding-bottom: round(@grid-gutter-width / 4);
-        margin-bottom: round(@line-height-computed * 3);
+    @media (max-width: @screen-sm-max) {
+        padding: 0 round(@grid-gutter-width / 4) round(@grid-gutter-width / 4);
     }
     @media (min-width: @screen-md-min) {
-        &.next-step:lang(sk) {
-            flex-wrap: wrap-reverse;
-        }
+        margin-bottom: 0;
+    }
+    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+        margin-bottom: -(round(@grid-gutter-width * .4));
     }
 }
-
-.next-step-back {
-    .back-shopping-link & {
-        display: none;
-        &::before {
-            &:extend(.shp-icon);
-        }
-    }
-    @media (min-width: @screen-md-min) {
-        .next-step & {
-            padding-right: 1ex;
-            font-size: @font-size-smaller;
-        }
-        .back-shopping-link & {
-            display: inline-block;
-            padding-top: @line-height-computed;
-            padding-bottom: @line-height-computed;
-            text-transform: uppercase;
-            &::before {
-                content: @icon-chevron-left-code;
-                margin-right: 1ex;
-            }
-        }
+.btn.next-step-forward {
+    white-space: nowrap;
+    &::after {
+        &:extend(.shp-icon);
+        content: @icon-chevron-right-code;
+        margin-left: 1ex;
     }
 }
-
-.next-step-forward,
-.next-step-finish {
-    flex: 0 0 auto;
+.back-shopping-link {
+    display: none;
 }
 
 .price-wrapper {
@@ -354,7 +333,13 @@ ol.cart-header {
         padding-top: round(@grid-gutter-width / 4);
         padding-bottom: round(@grid-gutter-width / 2);
     }
+    @media (min-width: @screen-md-min) {
+        & + .next-step {
+            margin-top: @line-height-computed;
+        }
+    }
 }
+// END: Template-specific declarations for the next step element
 
 .price-secondary {
     padding-top: round(@line-height-computed / 2);
@@ -417,71 +402,6 @@ ol.cart-header {
 .cart-content {
     h4 {
         text-transform: uppercase;
-    }
-}
-
-.next-step-back {
-    flex: 1 1 auto;
-    &::before {
-        &:extend(.shp-icon);
-    }
-    @media (max-width: @screen-xs-max) {
-        z-index: @z-base-1;
-        position: fixed;
-        left: 0;
-        top: 0;
-        .square(@cart_next-step-icon-size);
-        overflow: hidden;
-        text-indent: 999em;
-        white-space: nowrap;
-        &::before {
-            content: @icon-chevron-left-code;
-            position: absolute;
-            left: 0;
-            top: 0;
-            .square(100%);
-            font-size: @icon-font-size-base;
-            text-align: center;
-            line-height: @cart_next-step-icon-size;
-            text-indent: 0;
-        }
-    }
-    @media (min-width: @screen-md-min) {
-        .next-step:lang(sk) & {
-            flex: 1 1 auto;
-            width: 100%;
-            margin-top: round(@grid-gutter-width / 2);
-            text-align: center;
-        }
-    }
-}
-
-.btn.next-step-forward,
-.btn.next-step-finish {
-    flex: 0 0 auto;
-    @media (max-width: @screen-xs-max) {
-        z-index: @z-base-3;
-        position: relative;
-        display: block;
-        width: 100%;
-        padding-top: round(@grid-gutter-width / 2);
-        padding-bottom: round(@grid-gutter-width / 2);
-    }
-    @media (min-width: @screen-md-min) {
-        .next-step:lang(sk) & {
-            flex: 1 1 auto;
-            width: 100%;
-        }
-    }
-}
-
-.btn.next-step-forward {
-    &::after {
-        &:extend(.shp-icon);
-        content: @icon-chevron-right-code;
-        position: relative;
-        top: -2px;
-        margin-left: 1em;
     }
 }
 

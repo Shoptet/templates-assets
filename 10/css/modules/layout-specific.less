@@ -99,58 +99,6 @@ ul {
 
 }
 
-.next-step {
-    position: relative;
-    padding-bottom: 34px;
-    line-height: 34px;
-    text-align: center;
-    a {
-        &:first-child {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            &::before {
-                &:extend(.shp-icon);
-            }
-        }
-    }
-    @media (min-width: @screen-sm-min) {
-        .clearfixMixin();
-        margin-bottom: @line-height-computed;
-        padding-bottom: 0;
-        text-align: left;
-        a {
-            &:first-child {
-                position: static;
-                &::before {
-                    content: @icon-chevron-left-code;
-                    width: 20px;
-                    margin: -1px 10px 0 0;
-                    text-align: center;
-                }
-            }
-        }
-        .btn {
-            float: right;
-            margin-left: round(@line-height-computed / 2);
-        }
-    }
-    @media (min-width: @screen-md-min) {
-        #checkoutSidebar & {
-            padding-bottom: 34px;
-            a {
-                &:first-child {
-                    position: absolute;
-                }
-            }
-            .btn {
-                margin: 1em 0;
-            }
-        }
-    }
-}
-
 .box-subscribe {
     max-width: 978px;
     margin-left: auto;

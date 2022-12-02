@@ -242,8 +242,12 @@ ol.cart-header {
     }
 }
 
-.order-summary {
+.order-summary,
+.cart-content .form-group.consents {
     margin-bottom: round(@line-height-computed * 2);
+}
+
+.order-summary {
     h4 {
         margin: 0;
         padding-bottom: @line-height-computed;
@@ -392,3 +396,17 @@ ol.cart-header {
     padding: 0 20px;
 }
 
+// Shared declarations for the next step element behavior
+.nextStepCartWithoutSidebar();
+
+// START: Template-specific declarations for the next step element
+// TODO: remove this after the template width setting will be allowed in https://gitlab.shoptet.cz/applications/templates/-/merge_requests/408/diffs
+.next-step {
+    @media (min-width: @screen-lg-min) {
+        .id--16 &,
+        .id--17 & {
+            .nextStepColumn();
+        }
+    }
+}
+// END: Template-specific declarations for the next step element

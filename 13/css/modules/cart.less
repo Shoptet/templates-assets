@@ -51,13 +51,6 @@
             }
         }
     }
-    @media (min-width: @screen-xl-min) {
-        .id--9 & {
-            width: 82%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    }
     .cart-table {
         order: 1;
     }
@@ -651,36 +644,12 @@ tr.removeable {
     }
 }
 
-
-
+// Shared declarations for the next step element behavior
+.nextStepCartWithSidebar();
+// START: Template-specific declarations for the next step element
 .next-step {
-    display: flex;
-    margin: @line-height-computed auto;
-    flex-direction: column-reverse;
-    align-items: center;
-    .next-step-back {
-        margin: round(@grid-gutter-width / 2) 0 0;
-    }
-    @media (max-width: @cart-table-breakpoint) {
-        margin: @line-height-computed 0;
-    }
+    margin-top: @line-height-computed;
 }
-
-.next-step-back {
-    text-decoration: underline;
-    &::before {
-        &:extend(.shp-icon);
-        content: @icon-chevron-left-code;
-        margin-right: 1ex;
-    }
-}
-
-.btn.next-step-forward,
-.btn.next-step-finish {
-    position: relative;
-    width: 100%;
-}
-
 .next-step-forward {
     .id--16 &,
     .id--9 & {
@@ -688,10 +657,12 @@ tr.removeable {
             &:extend(.shp-icon);
             content: @icon-chevron-right-code;
             margin-left: 1ex;
-            vertical-align: inherit;
+            vertical-align: middle;
+            margin-top: -1px;
         }
     }
 }
+// END: Template-specific declarations for the next step element
 
 /* krok 2 */
 #checkoutContent {
