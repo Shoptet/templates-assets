@@ -28,4 +28,5 @@
 
     shoptet.adminBar = shoptet.adminBar || {};
 
+
 })(shoptet);
