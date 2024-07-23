@@ -171,6 +171,8 @@
         'ShoptetDOMRegisterFormLoaded',
         'ShoptetDOMCartContentLoaded',
         'ShoptetDOMSearchResultsLoaded',
+        'ShoptetDOMProductRatingsLoaded',
+        'ShoptetDOMProductDiscussionsLoaded',
         'ShoptetDOMAdvancedOrderLoaded',
         'ShoptetDOMPageContentLoaded',
         'ShoptetDOMPageMoreProductsLoaded'
@@ -205,6 +207,8 @@
         'ShoptetPageFilterValueChange',
         'ShoptetPageFiltersCleared',
         'ShoptetPageMoreProductsRequested',
+        'ShoptetProductRatingsRequested',
+        'ShoptetProductDiscussionsRequested',
         'ShoptetSuccessfulValidation',
         'ShoptetFailedValidation',
         'ShoptetProductsTracked',

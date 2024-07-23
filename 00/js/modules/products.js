@@ -151,7 +151,7 @@
             return false;
         });
 
-        $('#productDiscussion .add-comment').click(function() {
+        $html.on('click', '#productDiscussion .add-comment', function() {
             $('#productDiscussion .add-comment').show();
             $(this).hide();
             $discussionForm = $('.discussion-form');
@@ -164,6 +164,62 @@
                     .insertAfter('.discussion-form input[name="productId"]');
             }
         });
+
+        $html.on('click', '.js-load-next', function(e) {
+            e.preventDefault();
+
+            const target = $(this).attr('data-target');
+            const productId = $(this).attr('data-product-id');
+            const offset = Number($(this).attr('data-offset'));
+
+            const allowedTargets = ['ratings', 'discussions'];
+
+            if (!allowedTargets.includes(target) || isNaN(offset) || offset < 0 || !productId) {
+                return
+            }
+
+            let $el = $('#ratingTab .votes-wrap');
+            let listingEl = '.votes-wrap > .vote-wrap'
+            let loadNextEl = '.load-next-wrap'
+            let signalCustomEventName = 'ShoptetProductRatingsRequested';
+            let signalDomLoadName = 'ShoptetDOMRatingsLoaded';
+            let action = 'ajaxRatingLoad';
+
+            if (target === 'discussions') {
+                $el = $('#productDiscussion .discussion-wrapper > .votes-wrap')
+                listingEl = '.discussion-wrapper > .votes-wrap > .vote-wrap'
+                loadNextEl = '.load-next-wrap'
+                signalCustomEventName = 'ShoptetProductDiscussionsRequested';
+                signalDomLoadName = 'ShoptetDOMProductDiscussionsLoaded';
+                action = 'ajaxDiscussionLoad';
+            }
+
+            shoptet.scripts.signalCustomEvent(signalCustomEventName, e.target);
+            showSpinner();
+            $(this).closest(loadNextEl).remove();
+
+            $.ajax({
+                type: 'POST',
+                url: `/action/productDetail/${action}?productId=${productId}&offset=${offset}`,
+                headers: {'X-Shoptet-XHR': 'Shoptet_Coo7ai'},
+                dataType: 'html',
+                success: (function (payload) {
+                    const requestedDocument = shoptet.common.createDocumentFromString(payload);
+                    const listing = $(requestedDocument).find(listingEl);
+                    const loadNext = $(requestedDocument).find(loadNextEl);
+
+                    if (listing) {
+                        $el.append(listing);
+                        if (loadNext) {
+                            $el.after(loadNext);
+                        }
+                    }
+
+                    hideSpinner();
+                    shoptet.scripts.signalDomLoad(signalDomLoadName, $el);
+                })
+            });
+        })
 
         // load new products dynamically
         $html.on('click', '.load-products', function(e) {
@@ -221,7 +277,7 @@
             $('.social-buttons').toggleClass('no-display');
         });
 
-        if ('loading' in HTMLIFrameElement.prototype) {    
+        if ('loading' in HTMLIFrameElement.prototype) {
             $('iframe[data-iframe-src]').each(function() {
               var self = $(this);
               self.attr('src', self.data('iframe-src'));
@@ -676,11 +732,11 @@
         $(selector).each(function() {
             var self = $(this);
             var src = self.data('iframe-src');
-            
+
             if (self.attr('src') === src) {
                 return;
             }
-            
+
             self.attr('src', src);
         });
     }
